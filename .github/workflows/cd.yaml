@@ -26,16 +26,16 @@ jobs:
       with:
         kustomize-version: "3.6.1"
 
-    - name: Update Kubernetes Resources 
+    - name: Update Kubernetes resources 
       env: 
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run:
         cd k8s 
         kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
 
     - name: Commit
       run: 
-        git config --local user.email "action@github.com"
+        git config --local user.email "action@github.com"DDDDDDD
         git config --local user.name "GitHub Action"
         git commit -am "Bump docker version"
 
@@ -43,8 +43,4 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }} 
-        repository: dumenezes/gitopsfc
-
-
-
-
+        repository: dumenezes/gitopsfc 
