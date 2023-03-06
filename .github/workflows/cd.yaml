@@ -30,8 +30,8 @@ jobs:
       env: 
        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run:
-        cd k8s 
-        echo $GITHUB_SHA
+        pwd
+        ls -lah
         kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
 
     - name: Commit
