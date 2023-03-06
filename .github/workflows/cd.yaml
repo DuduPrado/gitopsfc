@@ -26,6 +26,13 @@ jobs:
       with:
         kustomize-version: "3.6.1"
 
+    - name: Update Kubernetes resources 
+      env: 
+       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      run:
+        cd k8s 
+        kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
+
     - name: Commit
       run: 
         git config --local user.email "action@github.com"
@@ -37,12 +44,3 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }} 
         repository: dumenezes/gitopsfc 
-
-    - name: Update Kubernetes resources 
-      env: 
-       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      run:
-        # cd k8s
-        # kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
-        pwd
-        ls -lah
