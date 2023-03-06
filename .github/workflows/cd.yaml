@@ -26,12 +26,12 @@ jobs:
       with:
         kustomize-version: "3.6.1"
 
-    - name: Update Kubernetes resources 
+    - name: Update Kubernetes Resources 
       env: 
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       run:
         cd k8s 
-        kustomize edite set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
+        kustomize edit set image goserver=$DOCKER_USERNAME/gitopsfc:$GITHUB_SHA
 
     - name: Commit
       run: 
