@@ -3,6 +3,8 @@ name: CDGitops
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   build:
@@ -38,7 +40,6 @@ jobs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git commit -am "Bump docker version"
-        git update-index --chmod=+x ./.github/scripts/backend_decrypt.sh
 
     - name: Push
       uses: ad-m/github-push-action@master
