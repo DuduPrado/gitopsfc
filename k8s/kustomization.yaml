@@ -8,4 +8,4 @@ resources:
 images:
 - name: goserver
   newName: dumenezes/gitopsfc
-  newTag: 5b9764b4c75575a1a825f55e7714e8c0a77d4186
+  newTag: novatag
